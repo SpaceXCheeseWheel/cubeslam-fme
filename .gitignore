@@ -1,6 +1,6 @@
 .DS_Store
 build/
-components/
+components/**
 node_modules/
 app.yaml.tmp
 lib/shaders/*.js
@@ -17,3 +17,5 @@ public/lang/*.arb
 server.conf
 *.sublime-workspace
 *.sublime-project
+
+package-lock.json

@@ -1,13 +1,13 @@
 {
   "name": "slam",
   "dependencies": {
-    "component/emitter": "*",
-    "component/mousetrap": "*",
+    "sindresorhus/component-emitter": "v1.3.1",
+    "components/mousetrap": "f42ec66f7eadd6e26155dae7362c3706072c6c45",
     "component/cookie": "*",
-    "component/jquery": "1.9.1",
-    "component/preloader": "*",
+    "components/jquery": "1.9.1",
+    "component/preloader": "ab538eba66921839af4c712ce03a2c345d8e24f9",
     "publicclass/rtc": "*",
-    "publicclass/request-animation-frame": "*",
+    "publicclass/request-animation-frame": "de36484d2792f584d33779c7b7c5bcb174492d85",
     "publicclass/now": "*",
     "publicclass/geom": "*",
     "publicclass/copy": "*",
