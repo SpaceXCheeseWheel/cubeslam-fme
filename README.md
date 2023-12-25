@@ -1,7 +1,19 @@
-Cube Slam
+Cube Slam - Florida Man Edition
 =========
 
-Cube Slam is a WebRTC Chrome Experiment that you can play face-to-face against your friends.
+Cube Slam FME is a attempt to revitalize the original WebRTC Chrome Experiment that was shut down by Google after years of no maintenance. 
+
+
+## Milestones
+
+1. Get Cube Slam running on a sandboxed system with era-accurate dependencies (or as close as possible)
+  - *Components*, a deprecated webpack alternative, uses it's own repositories, some of which have been deleted. Find archives of these repositories. 
+  - Old (0.xxx) versions of NodeJS are not compatible with modern operating systems.  
+2. Update all user-facing dependencies to modern versions as needed.
+  - Python 2 -> Python 3
+  - NodeJS 0.xx -> >18.xx
+  - Jade -> Pug
+4. Fix bugs (no music, webrtc issues, etc)
 
 ## Building
 
