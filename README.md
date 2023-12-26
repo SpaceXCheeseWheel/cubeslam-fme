@@ -7,13 +7,16 @@ Cube Slam FME is a attempt to revitalize the original WebRTC Chrome Experiment t
 ## Milestones
 
 1. Get Cube Slam running on a sandboxed system with era-accurate dependencies (or as close as possible)
-  - *Components*, a deprecated webpack alternative, uses it's own repositories, some of which have been deleted. Find archives of these repositories. 
-  - Old (0.xxx) versions of NodeJS are not compatible with modern operating systems.  
+    - All components dependencies have been found and replaced with standard packages.
+    - App is designed to run on google cloud (app.yaml). There is a gcloud simulator, but ancient app.yaml causes problems. 
+    - Find and replace w/ the following components: a host for static content and a golang backend for online play.
+      -  Golang backend is NOT in a modern go format. Will need to make a module? 
 2. Update all user-facing dependencies to modern versions as needed.
-  - Python 2 -> Python 3
-  - NodeJS 0.xx -> >18.xx
-  - Jade -> Pug
+    - Full scope of this tbd. Very likely that this relies on outdated or deprecated browser APIs.
+    - Jade -> Pug
+      - Uses a VERY outdated version of the jade format.
 4. Fix bugs (no music, webrtc issues, etc)
+    - Music is handled by dmaf.min.js; It seems like music logic, among other things, is stored in here. Is minified and no public source exists. Could un-minify? Look into https://gist.github.com/tencircles/c202c8835d5b02262afd and https://gist.github.com/shotgunner/9ed36812420e853f584e87141618ad77.
 
 ## Building
 
