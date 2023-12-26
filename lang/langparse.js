@@ -2,6 +2,7 @@
 var fs = require('fs')
   , jsdom = require('jsdom');
 
+
 var files = process.argv.slice(2);
 var pending = files.length;
 
@@ -13,12 +14,12 @@ var result = {
 files.forEach(function(file){
   jsdom.env({
     html: fs.readFileSync(file, 'utf8'),
-    scripts: [ 'jquery.js' ],
+    scripts: ["http://code.jquery.com/jquery.js"],
     done: function(err, window) {
       if (err) {
         console.log(err);
       } else {
-        var $ = window.jQuery;
+        var $ = window.$;
         $('*').filter(function() { return $(this).attr('arb:id'); }).each(function() {
           result[$(this).attr('arb:id')] = $(this).html() || $(this).attr('content');
         });
