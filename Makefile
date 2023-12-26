@@ -8,7 +8,7 @@ SHADERS_JS=$(SHADERS:.glsl=.js)
 LIB=$(shell find lib -name "*.js" -type f)
 LIB_3D=$(shell find lib/renderer-3d -name "*.js" -type f)
 LIB_CSS=$(shell find lib/renderer-css -name "*.js" -type f)
-COMPONENTS=$(shell find components -name "*.js" -type f)
+# COMPONENTS=$(shell find components -name "*.js" -type f) // Deprecated for webpack
 MINIFY=build public/javascript/slam.min.js public/javascript/renderer-3d.min.js public/javascript/renderer-css.min.js build/build.min.js
 
 GENERATED_LANGUAGES=lang/arbs/en-US.arb
@@ -30,7 +30,7 @@ GEOMETRY_JS += lib/renderer-3d/geometry/terrain3.js lib/renderer-3d/geometry/bea
 							 lib/renderer-3d/geometry/cpu.js
 
 
-build: build-shaders build-geometry build-component build-styles build-jade build-localization build-renderer
+build: build-shaders build-geometry build-styles build-jade build-localization build-renderer
 	@:
 
 build-min: build $(MINIFY)
@@ -38,7 +38,7 @@ build-renderer: build/build-3d.js build/build-css.js
 build-shaders: $(SHADERS_JS) lib/renderer-3d/shaders/index.js
 build-geometry: $(GEOMETRY_JS) lib/renderer-3d/geometry/index.js
 build-jade: build/build.html build/tech.html
-build-component: build/build.js
+# build-component: build/build.js
 build-styles: build/build-stylus.css
 build-localization: build/localization.arb $(LINKED_LANGUAGES)
 force-build:
@@ -66,7 +66,7 @@ node_modules/:
 	npm install
 
 components/: node_modules
-	node_modules/.bin/component-install
+#	node_modules/.bin/component-install
 
 lib/renderer-3d/shaders/%.js: lib/renderer-3d/shaders/%.glsl
 	support/str-to-js > $@ < $<
@@ -99,13 +99,14 @@ build/build-stylus.css: $(STYLUS)
 	node_modules/.bin/stylus --use nib < stylesheets/screen.styl --include-css -I stylesheets > $@
 
 build/build-3d.js: $(LIB_3D) $(GEOMETRY_JS) $(SHADERS_JS)
-	(cd lib/renderer-3d && ../../node_modules/.bin/component build && sed -e 1,$(REQUIRE_LINES)d build/build.js | cat - aliases.js) > $@
+#	(cd lib/renderer-3d && ../../node_modules/.bin/component build && sed -e 1,$(REQUIRE_LINES)d build/build.js | cat - aliases.js) > $@
 
 build/build-css.js: $(LIB_CSS)
-	(cd lib/renderer-css && ../../node_modules/.bin/component build && sed -e 1,$(REQUIRE_LINES)d build/build.js | cat - aliases.js) > $@
+#	(cd lib/renderer-css && ../../node_modules/.bin/component build && sed -e 1,$(REQUIRE_LINES)d build/build.js | cat - aliases.js) > $@
 
-build/build.js: components $(COMPONENTS) $(LIB) component.json
-	node_modules/.bin/component-build $(DEV)
+# build/build.js: components $(COMPONENTS) $(LIB) component.json
+#	node_modules/.bin/component-build 
+# Add to en of last line $(DEV)
 
 lang/arbs/en-US.arb: build/*.html
 	node lang/langparse.js $^ > $@
@@ -117,7 +118,7 @@ public/lang/%.arb: lang/arbs/%.arb
 	ln -s ../../$< $@
 
 clean: clean-geometry clean-localization
-	rm -Rf build/ components/ $(SHADERS_JS)
+	rm -Rf build/* $(SHADERS_JS)
 
 clean-localization:
 	rm -Rf $(GENERATED_LANGUAGES)
@@ -153,5 +154,5 @@ test:
 .SUFFIXES:
 .PHONY: test proxy clean clean-geometry clean-localization \
 				build build-min build-shaders build-styles force-build \
-				build-geometry build-component build-localization \
+				build-geometry build-localization \
 				prepare-deploy deploy-webrtc deploy-goggles1 deploy-goggles deploy-einar deploy-alfred
