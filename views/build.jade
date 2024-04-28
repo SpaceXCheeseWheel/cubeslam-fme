@@ -1,3 +1,5 @@
+// TODO: the /public/ is a temporary fix.
+
 - var name = "Cube Slam";
 - var description = "Play face-to-face against your friends.";
 - var url = 'https://cubeslam.com/';
@@ -26,14 +28,14 @@ html(lang='en',manifest='/manifest.appcache')
       script(src='//html5shiv.googlecode.com/svn/trunk/html5.js')
 
     title(arb:id='title') #{name}
-    link(rel='apple-touch-icon', href='/images/mobile/apple-touch-57.png')
-    link(rel='apple-touch-icon', sizes='72x72', href='/images/mobile/apple-touch-72.png')
-    link(rel='apple-touch-icon', sizes='114x114', href='/images/mobile/apple-touch-114.png')
-    link(rel='apple-touch-icon', sizes='144x144', href='/images/mobile/apple-touch-144.png')
+    link(rel='apple-touch-icon', href='/public/images/mobile/apple-touch-57.png')
+    link(rel='apple-touch-icon', sizes='72x72', href='/public/images/mobile/apple-touch-72.png')
+    link(rel='apple-touch-icon', sizes='114x114', href='/public/images/mobile/apple-touch-114.png')
+    link(rel='apple-touch-icon', sizes='144x144', href='/public/images/mobile/apple-touch-144.png')
     link(rel='canonical', href=url)
 
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Varela')
-    link(rel='stylesheet', href='/stylesheets/slam.css?v={{.Version}}')
+    link(rel='stylesheet', href='/public/stylesheets/slam.css?v={{.Version}}')
     script
 
       var _gaq = _gaq || [];
@@ -49,7 +51,7 @@ html(lang='en',manifest='/manifest.appcache')
   body(class="{{.State}}", itemscope, itemtype='http://schema.org/Product')
     header.state.main-menu.animate.inactive
       h1(itemprop='name')
-        img(src='/images/logo_large.png', width='1533', height='155', alt='#{name}')
+        img(src='/public/images/logo_large.png', width='1533', height='155', alt='#{name}')
       h2.state.inactive(itemprop='description') #{description}
 
 
@@ -356,7 +358,7 @@ html(lang='en',manifest='/manifest.appcache')
 
       #canv-css.state.game.inactive
         .background.state.game
-          img.bg(data-src-mobile='/images/mobile/game-mobile.jpg', data-src-tablet='/images/mobile/game-full.jpg', src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAMAAAAoyzS7AAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAA1JREFUeNoBAgD9/wAAAAIAAVMrnDAAAAAASUVORK5CYII=', alt='Mobile background')
+          img.bg(data-src-mobile='/public/images/mobile/game-mobile.jpg', data-src-tablet='/public/images/mobile/game-full.jpg', src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAMAAAAoyzS7AAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAA1JREFUeNoBAgD9/wAAAAIAAVMrnDAAAAAASUVORK5CYII=', alt='Mobile background')
           .screen
             .effect.hit-cpu.hidden
             .effect.hit-player.hidden
@@ -402,7 +404,7 @@ html(lang='en',manifest='/manifest.appcache')
     //GAME SCORES
     section#scores.state.game.inactive
       .logo
-        img(src="/images/minicubeslam.png", alt='Cube Slam Logo')
+        img(src="/public/images/minicubeslam.png", alt='Cube Slam Logo')
         h1 #{name}
         p.level(arb:id='scoreLevel') Level 
           span#level 1
@@ -456,7 +458,7 @@ html(lang='en',manifest='/manifest.appcache')
     //MOBILE
     section.mobile
       section.state.main-menu.inactive
-        img(data-src-mobile='/images/mobile/landing-mobile.jpg', data-src-tablet='/images/mobile/landing-tablet.jpg', src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAMAAAAoyzS7AAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAA1JREFUeNoBAgD9/wAAAAIAAVMrnDAAAAAASUVORK5CYII=', alt='')
+        img(data-src-mobile='/public/images/mobile/landing-mobile.jpg', data-src-tablet='/public/images/mobile/landing-tablet.jpg', src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAMAAAAoyzS7AAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAA1JREFUeNoBAgD9/wAAAAIAAVMrnDAAAAAASUVORK5CYII=', alt='')
       #gamepad.state.game.inactive
         button.left.icon(type='button', data-icon='<')
         button.right.icon(type='button', data-icon='>')
@@ -473,7 +475,7 @@ html(lang='en',manifest='/manifest.appcache')
             h1(arb:id='aboutMobileH1') About<br/>Cube Slam
             p(arb:id='aboutMobileText1') Cube Slam is a chrome experiment built to showcase the latest technology in Google Chrome.
           div
-            img(src='/images/mobile/gameboard.jpg', width='600', height='281', alt='mobile game board')
+            img(src='/public/images/mobile/gameboard.jpg', width='600', height='281', alt='mobile game board')
             p(arb:id='aboutMobileText2') Visit cubeslam.com in Chrome on your computer to play face to face against a friend.
             a.terms(target='_blank', href='https://www.google.com/policies/', arb:id='footerTerms') Terms &amp; privacy
             .buttons
@@ -595,15 +597,15 @@ html(lang='en',manifest='/manifest.appcache')
     #benchmarks
 
     script(src='/_ah/channel/jsapi')
-    script(src='/javascript/libs/dat.gui.js')
-    script(src='/javascript/libs/modernizr.custom.65399.js')
-    script(src='/javascript/libs/stats.{{.Minified}}js')
-    script(src='/javascript/slam.{{.Minified}}js?v={{.Version}}')
-    script
-      require('slam')(ctx = {
-        room: '{{.Room}}',
-        acceptLanguage: '{{.AcceptLanguage}}',
-        ext: '.{{.Minified}}js?v={{.Version}}',
-        dev: {{.Dev}},
-        v: '{{.Version}}'
-      })
+    script(src='/public/javascript/libs/dat.gui.js')
+    script(src='/public/javascript/libs/modernizr.custom.65399.js')
+    script(src='/public/javascript/libs/stats.{{.Minified}}js')
+    script(src='/dist/main.js')
+//    script
+//      require('slam')(ctx = {
+//        room: '{{.Room}}',
+//        acceptLanguage: '{{.AcceptLanguage}}',
+//        ext: '.{{.Minified}}js?v={{.Version}}',
+//        dev: {{.Dev}},
+//        v: '{{.Version}}'
+//      })

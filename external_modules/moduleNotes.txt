@@ -1,0 +1,34 @@
+# gh
+publicclass/base64-arraybuffer // todo: lock version!
+component/cookie#1.1.3
+ecarter/css-emitter // todo: lock version!
+sindresorhus/component-emitter#1.3.0 // New versions exist for njs18, still being updated
+components/jquery#1.9.1 // still being updated
+
+publicclass/netchan // todo: lock version!
+publicclass/now // todo: lock version!
+publicclass/request-animation-frame // todo: lock version!
+publicclass/stash // todo: lock version!
+
+ccampbell/mousetrap#1.4.6 // TODO: Refuses to install this version due to dependency hell. Keep an eye on this dep.
+component/preloader -> SpaceXCheeseWheel/preloader // modified. TODO: Double check that npm packages are happy.
+
+// Actual work needed for theese ones.
+publicclass/rtc // modified. TODO: Fix packages and dependencies!
+publicclass/latency // modified. TODO:fix package.json... Whoever made the tree of dependencies for this one, I hate you.
+    - component/standard-deviation GOT
+        - component/variance GOT
+            - component/to-function GOT
+                - component/props GOT
+            - component/mean
+                - component/to-function GOT
+
+    - publicclass/median GOT
+
+publicclass/copy
+    - component/type#v1.2.2
+
+
+# npm
+geom 
+jsdom

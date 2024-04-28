@@ -72,7 +72,7 @@ lib/renderer-3d/shaders/%.js: lib/renderer-3d/shaders/%.glsl
 	support/str-to-js > $@ < $<
 
 lib/renderer-3d/geometry/%.json: lib/renderer-3d/geometry/%.obj
-	python lib/renderer-3d/geometry/convert_obj_three.py -i $< -o $@ -x 100.0
+	python2 lib/renderer-3d/geometry/convert_obj_three.py -i $< -o $@ -x 100.0
 
 lib/renderer-3d/geometry/%.js: lib/renderer-3d/geometry/%.json
 	support/str-to-js > $@ < $<

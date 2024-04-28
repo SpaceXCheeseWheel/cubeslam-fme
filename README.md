@@ -15,8 +15,14 @@ Cube Slam FME is a attempt to revitalize the original WebRTC Chrome Experiment t
     - Full scope of this tbd. Very likely that this relies on outdated or deprecated browser APIs.
     - Jade -> Pug
       - Uses a VERY outdated version of the jade format.
+    - Update the python script for converting models to python3.
 4. Fix bugs (no music, webrtc issues, etc)
     - Music is handled by dmaf.min.js; It seems like music logic, among other things, is stored in here. Is minified and no public source exists. Could un-minify? Look into https://gist.github.com/tencircles/c202c8835d5b02262afd and https://gist.github.com/shotgunner/9ed36812420e853f584e87141618ad77.
+
+
+----
+## Original Documentation:
+
 
 ## Building
 
